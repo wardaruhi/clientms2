@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Vehicles Sales{% endblock title %}
+
+{% block content %}
+  {% for vehicleinfo in object_list %}
+    <div class="card">
+      <div class="card-header">
+        <span class="font-weight-bold">{{ vehicleinfo.companymake }}</span>
+        <span class="font-weight-bold">model: {{ vehicleinfo.model_number }} | </span>
+        <span class="font-weight-bold">vin: {{ vehicleinfo.VIN_number }} | </span>
+
+        <span class="font-muted">purchase: {{ vehicleinfo.date_of_purchase }} | </span>
+        <span class="font-muted-">service: {{ vehicleinfo.date_of_last_service }} | </span>
+      </div>
+      <div class="card-body">
+        <a href="{% url 'vehicleinfo_edit' vehicleinfo.pk %}">Edit</a> |
+        <a href="{% url 'vehicleinfo_delete' vehicleinfo.pk %}">Delete</a>
+      </div>
+      <div class="card-footer">
+      </div>
+    </div>
+    <br />
+  {% endfor %}
+{% endblock content %}
